@@ -11,6 +11,7 @@ import { doc, onSnapshot } from 'firebase/firestore';
 import { auth, db } from './firebase';
 import { SiteSettings } from './types';
 import { Toaster } from '@/components/ui/sonner';
+import ScrollToTop from './components/ScrollToTop';
 
 // Pages
 import Home from './pages/Home';
@@ -76,6 +77,7 @@ export default function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-white selection:bg-navy selection:text-white" style={{ '--primary-navy': settings.primaryColor } as any}>
         <Navbar settings={settings} user={user} />
         <main>
