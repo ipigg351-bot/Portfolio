@@ -41,17 +41,28 @@ export default function App() {
     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setIsAuthReady(true);
+    }, (error) => {
+      console.error("Firebase auth subscription error:", error);
+      setIsAuthReady(true); // Proceed anyway to avoid blank screen
     });
 
     const unsubscribeSettings = onSnapshot(doc(db, 'settings', 'global'), (snapshot) => {
       if (snapshot.exists()) {
         setSettings(snapshot.data() as SiteSettings);
       }
+    }, (error) => {
+      console.error("Firebase settings subscription error:", error);
     });
+
+    // Fallback timer to ensure app loads if Firebase is silent
+    const timer = setTimeout(() => {
+      setIsAuthReady(true);
+    }, 5000);
 
     return () => {
       unsubscribeAuth();
       unsubscribeSettings();
+      clearTimeout(timer);
     };
   }, []);
 
