@@ -32,6 +32,17 @@ export default function YharnamPage() {
           </a>
         </div>
       </div>
+
+      {/* Contact Section at Bottom */}
+      <section className="pb-40 px-6">
+        <div className="max-w-7xl mx-auto text-center border-t border-editorial-border pt-32">
+          <h3 className="text-ink font-black text-xl mb-4">Contact</h3>
+          <div className="flex flex-col gap-2 text-gray-400 font-medium">
+            <p className="text-lg">ldnsh351@gmail.com</p>
+            <p className="text-lg">010. 4157. 7438</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
