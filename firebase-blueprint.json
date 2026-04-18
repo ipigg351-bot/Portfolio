@@ -1,0 +1,76 @@
+{
+  "entities": {
+    "SiteSettings": {
+      "title": "Site Settings",
+      "description": "Global configuration for the website branding and information.",
+      "type": "object",
+      "properties": {
+        "siteName": { "type": "string", "description": "The name of the site (e.g., Level Designer Nam Si-hyeon)" },
+        "slogan": { "type": "string", "description": "Main advertising slogan" },
+        "heroDescription": { "type": "string", "description": "Short bio/intro in hero section" },
+        "primaryColor": { "type": "string", "description": "Main theme color hex" },
+        "contactEmail": { "type": "string", "format": "email" },
+        "instagramUrl": { "type": "string", "format": "uri" },
+        "kakaoUrl": { "type": "string", "format": "uri" }
+      },
+      "required": ["siteName", "slogan"]
+    },
+    "PortfolioItem": {
+      "title": "Portfolio Item",
+      "description": "A project showcase entry.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string", "enum": ["Logo", "Website", "Branding", "UI/UX"] },
+        "imageUrl": { "type": "string", "format": "uri" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "imageUrl"]
+    },
+    "BlogPost": {
+      "title": "Blog Post",
+      "description": "News or design insights article.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "imageUrl": { "type": "string", "format": "uri" },
+        "author": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "content"]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "Customer contact form submission.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["New", "Read", "Replied"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "message"]
+    }
+  },
+  "firestore": {
+    "/settings/global": {
+      "schema": "SiteSettings",
+      "description": "Singleton for main site settings"
+    },
+    "/portfolio/{itemId}": {
+      "schema": "PortfolioItem",
+      "description": "Portfolio items collection"
+    },
+    "/posts/{postId}": {
+      "schema": "BlogPost",
+      "description": "Blog posts collection"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": "Inquiry",
+      "description": "Contact form submissions"
+    }
+  }
+}
