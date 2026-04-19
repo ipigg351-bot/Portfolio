@@ -12,7 +12,7 @@ export default function Home({ settings }: { settings: SiteSettings }) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-black leading-[1.15] tracking-tight mb-8 text-ink"
+            className="text-4xl md:text-6xl font-bold leading-[1.15] tracking-tight mb-8 text-ink"
           >
              공간의 구조를 읽고 설계하는 <br />
              레벨디자이너 남시현입니다.
