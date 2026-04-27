@@ -18,6 +18,7 @@ import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import Yharnam from './pages/portfolio/Yharnam';
 import LaMancha from './pages/portfolio/LaMancha';
+import Gameplay from './pages/Gameplay';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -86,6 +87,7 @@ export default function App() {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/portfolio/yharnam" element={<Yharnam />} />
             <Route path="/portfolio/lamancha" element={<LaMancha />} />
+            <Route path="/gameplay" element={<Gameplay />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact settings={settings} />} />
             <Route path="/login" element={<Login user={user} />} />
@@ -114,6 +116,10 @@ function Navbar({ settings, user }: { settings: SiteSettings; user: User | null 
       
       <div className="flex items-center gap-8">
         <div className="hidden lg:flex items-center gap-8 text-[14px] font-bold text-gray-500">
+          <Link to="/gameplay" className="hover:text-ink transition-colors">
+            게임 플레이
+          </Link>
+          
           {/* Portfolio Dropdown */}
           <div className="relative group cursor-pointer py-1">
             <div className="flex items-center gap-1 hover:text-ink transition-colors">
